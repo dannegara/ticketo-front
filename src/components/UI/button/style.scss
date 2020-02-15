@@ -1,0 +1,21 @@
+$buttonBgColor: #F2CF07;
+
+.default-button{
+    background-color: $buttonBgColor;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    height: 44px;
+    color: rgb(238, 238, 238);
+    border-radius: 5px;
+    font-size: 1.3em;
+    transition-duration: 0.3s;
+    font-family: sans-serif;
+    &:hover{
+        background-color: darken($buttonBgColor, 5);
+    }
+    &:active{
+        transform: translateY(3px);
+    }
+  }
