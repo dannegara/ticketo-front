@@ -1,0 +1,13 @@
+$inputDefaultColor: #F2CF07;
+
+.default-input{
+    background-color: transparent;
+    border: 1px solid darken(hsl(240, 6%, 16%), 5);
+    border-radius: 5px;
+    outline: none;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+    &:focus{
+        box-shadow: 0 0 5px $inputDefaultColor;
+    }
+}
