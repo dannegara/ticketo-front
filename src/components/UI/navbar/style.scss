@@ -1,0 +1,30 @@
+$bgColor: hsl(240, 6%, 16%);
+$navWidth: 100%;
+$navHeight: 75px;
+
+nav{
+    color: white;
+    width: $navWidth;
+    height: $navHeight;
+    background-color: darken($bgColor, 3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .links-container {
+        width: 400px;
+        button{
+            margin-left: 16px;
+        }
+    }
+    .logo-container{
+        margin-left: 16px;
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+    @media screen and (max-width: 440px){
+        //dummy thing for a while
+        display: none;
+    }
+}

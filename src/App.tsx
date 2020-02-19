@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.scss';
 import Login from './components/login';
 import Register from './components/register';
+import NavBar from './components/UI/navbar';
 //import { FaBeer } from 'react-icons/fa';
 
 export interface HelloProps{
@@ -12,27 +13,6 @@ export interface HelloProps{
 }
 
 // const App: React.FunctionComponent<HelloProps> = props => {
-
-//   return (
-//     <div className="App">
-//       {props.compiler}
-//       <header className="App-header">
-//         {props.framework}
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
 // }
 
 // interface State{
@@ -50,15 +30,21 @@ class App extends Component{
   render(){
 
     return(
-      <Switch>
-        <Route path="/login" exact>
-          <Login />
-        </Route>
-        <Route path="/register" exact>
-          <Register />
-        </Route>
-        <Redirect to="/login" />
-      </Switch>
+      <div>
+        <NavBar />
+        <Switch>
+          <Route path="/" exact>
+            <div></div>
+          </Route>
+          <Route path="/login" exact>
+            <Login />
+          </Route>
+          <Route path="/register" exact>
+            <Register />
+          </Route>
+          <Redirect to="/login" />
+        </Switch>
+      </div>
     )
   }
 }

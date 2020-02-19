@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
 import './style.scss';
 
-export default () => {
+export default (props: HTMLProps<HTMLButtonElement>) => {
     return(
-        <button className="default-button">Click me</button>
+        <button className="default-button">{props.children}</button>
     )
 }

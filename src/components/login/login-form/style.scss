@@ -1,0 +1,36 @@
+$blackOpacedColor: rgba(0, 0, 0, 0.781);
+$defaultInputMargin: 8px;
+$inputPadding: 8px;
+$fontSize: 24px;
+$white: rgba(255, 255, 255, 0.671);
+$containerBorder: 3px solid rgba(242, 207, 7, 0.76);
+
+.login-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: $containerBorder;
+    padding: 32px;
+    border-radius: 8px;
+    width: 450px;
+    max-width: 60%;
+    height: 44%;
+    .login-page-input{
+        width: 100%;
+        margin-top: $defaultInputMargin;
+        margin-bottom: $defaultInputMargin;
+        padding: $inputPadding;
+        font-size: $fontSize;
+        color: $white;
+    }
+    button{
+        width: 100%;
+    }
+    .plain-text{
+        color: $white;
+        .link{
+            color: #fff;
+        }
+    }
+}

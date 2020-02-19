@@ -1,11 +1,12 @@
-$inputDefaultColor: #F2CF07;
+$inputDefaultColor: rgba(242, 207, 7, 0.699);
+$inputBorder: 1px solid $inputDefaultColor;
 
 .default-input{
     background-color: transparent;
-    border: 1px solid darken(hsl(240, 6%, 16%), 5);
+    border: $inputBorder;
     border-radius: 5px;
     outline: none;
-    transition-duration: 0.5s;
+    transition-duration: 0.3s;
     transition-timing-function: ease-in;
     &:focus{
         box-shadow: 0 0 5px $inputDefaultColor;
