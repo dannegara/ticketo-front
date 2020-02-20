@@ -4,6 +4,7 @@ import './App.scss';
 import Login from './components/login';
 import Register from './components/register';
 import NavBar from './components/UI/navbar';
+import Feed from './components/feed';
 //import { FaBeer } from 'react-icons/fa';
 
 export interface HelloProps{
@@ -11,19 +12,6 @@ export interface HelloProps{
   framework: string;
   notNecessaryProps?: string;
 }
-
-// const App: React.FunctionComponent<HelloProps> = props => {
-// }
-
-// interface State{
-//   count: number;
-// }
-
-// class Counter extends React.Component<HelloProps, State>{
-//   state: State = {
-//     count: 0
-//   }
-// }
 
 class App extends Component{
 
@@ -34,7 +22,7 @@ class App extends Component{
         <NavBar />
         <Switch>
           <Route path="/" exact>
-            <div></div>
+            <Feed />
           </Route>
           <Route path="/login" exact>
             <Login />
