@@ -1,4 +1,5 @@
 import React, { SFC } from 'react';
+import { TiTicket } from 'react-icons/ti';
 import './style.scss';
 
 interface IEventProps{
@@ -41,7 +42,7 @@ const EventPreview: SFC<IEventProps> = ({
                 <div className="event-info">
                     <span>{eventName}</span> 
                     <span>{eventDate}</span>
-                    <span>Tickets sold: {ticketCount}</span>
+                    <span>Tickets sold: {ticketCount} <TiTicket /></span>
                 </div>
                 <div className="description">
                     {description}

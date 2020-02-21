@@ -8,7 +8,13 @@ import Spinner from '../../UI/spinner';
 const STYLE_DEFAULT_INPUT: string = "default-input";
 const STYLE_DEFAULT_CONTAINER: string = "login-block";
 
-export default () => {
+interface ILoginForm{
+    isLoading: boolean
+}
+
+const LoginForm: React.SFC<ILoginForm> = ({
+    isLoading
+}) => {
     return(
         <div className={STYLE_DEFAULT_CONTAINER}>
             <Input 
@@ -19,11 +25,13 @@ export default () => {
                 className={`${STYLE_DEFAULT_INPUT} login-page-input`} 
                 placeholder="Password" 
             />
-            <Button>Login</Button>
-            <Spinner />
+            {!isLoading ? <Button>Login</Button>:
+            <Spinner />}
             <p className="plain-text">
                 Don't have an account? <Link to="/register" className="link">Register</Link>
             </p>
         </div>
     )
 }
+
+export default LoginForm;

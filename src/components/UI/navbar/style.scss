@@ -10,6 +10,9 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 1;
     .links-container {
         width: 400px;
         button{

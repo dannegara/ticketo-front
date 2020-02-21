@@ -5,17 +5,25 @@ import './style.scss';
 const STYLE_DEFAULT_LOGIN: string = 'login-container';
 
 interface State{
-    msg?: string
+    isLoading: boolean
 }
 interface LoginProps{
     msg?: string
 }
 
 class Login extends Component<LoginProps, State>{
+
+    state = {
+        isLoading: false
+    }
+
     render(){
+        const {
+            isLoading
+        } = this.state;
         return(
             <div className={STYLE_DEFAULT_LOGIN}>
-                <LoginForm />
+                <LoginForm isLoading={isLoading} />
             </div>
         )
     }
