@@ -4,7 +4,13 @@ import './style.scss';
 import Button from '../button';
 import Logo from '../logo';
 
-class NavBar extends Component {
+interface IState{
+    sidebar: string[],
+    background: string[]
+}
+interface IProps{}
+
+class NavBar extends Component<IProps,IState> {
 
     state = {
         sidebar: ["sidebar"],
