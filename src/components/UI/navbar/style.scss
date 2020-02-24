@@ -1,6 +1,13 @@
 $bgColor: hsl(240, 6%, 16%);
 $navWidth: 100%;
 $navHeight: 75px;
+$mobileWidth: 455px;
+$margins: 16px;
+@mixin fixed-full-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
 
 nav{
     color: white;
@@ -16,18 +23,70 @@ nav{
     .links-container {
         width: 400px;
         button{
-            margin-left: 16px;
+            margin-left: $margins;
+        }
+        @media screen and (max-width: $mobileWidth){
+            display: none;
         }
     }
     .logo-container{
-        margin-left: 16px;
+        margin-left: $margins;
+        margin-right: $margins;
         a{
             text-decoration: none;
             color: #fff;
         }
     }
-    @media screen and (max-width: 440px){
-        //dummy thing for a while
+    .side-menu-opener{
+        width: 25px;
+        height: 20px;
+        padding: $margins;
+        border: 1px solid darken($bgColor, 10);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        margin-left: $margins;
+        .sandwich{
+            width: 100%;
+            height: 5px;
+            background-color: #fff;
+            border-radius: 3px;
+        }
+        @media screen and (min-width: $mobileWidth){
+            display: none;
+        }
+    }
+}
+.sidebar-container{
+    .sidebar-background{
+        background-color: rgba(0, 0, 0, 0.404);
+        z-index: 1;
+        width: 100%;
+        height: 100vh;
+        @include fixed-full-screen();
+        display: none;
+    }
+    .show-sidebar-background{
+        display: block;
+    }
+    .sidebar{
+        @include fixed-full-screen();
+        height: 100vh;
+        width: 250px;
+        background-color: black;
+        z-index: 2;
+        color: #fff;
+        transform: translateX(-300px);
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
+    }
+    .show-sidebar{
+        transform: translateX(0);
+    }
+    @media screen and (min-width: $mobileWidth){
         display: none;
     }
 }
