@@ -5,7 +5,8 @@ import Login from './components/login';
 import Register from './components/register';
 import NavBar from './components/UI/navbar';
 import Feed from './components/feed';
-//import { FaBeer } from 'react-icons/fa';
+import Event from './components/event';
+import Purchase from './components/purchase';
 
 export interface HelloProps{
   compiler: string;
@@ -30,6 +31,8 @@ class App extends Component{
           <Route path="/register" exact>
             <Register />
           </Route>
+          <Route path="/event/:eventId" exact component={Event} />
+          <Route path="/purchase/:eventId" exact component={Purchase} />
           <Redirect to="/login" />
         </Switch>
       </div>
