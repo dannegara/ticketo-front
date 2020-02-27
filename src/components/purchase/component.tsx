@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import './style.scss';
+import Button from '../UI/button';
 
 interface MatchParams{
     eventId: string;
@@ -24,9 +25,16 @@ export default class extends Component<IProps, IState>{
 
     render(){
         return(
-            <div>
-                <br/><br/><br/><br/><br/><br/><br/><br/>
-                Purchase page
+            <div className="purchase-page-container">
+                <div className="purchase-card">
+                    <div className="event-info">
+
+                    </div>
+                    <div className="credit-card">
+
+                    </div>
+                    <Button>Purchase</Button>
+                </div>
             </div>
         )
     }

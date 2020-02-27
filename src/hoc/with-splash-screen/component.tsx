@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import SplashScreen from '../../components/splash-screen';
 
 const withSplashScreen = (WrapperComponent: React.ComponentClass) => {
     return class extends Component{
         state = {
             loading: true
         }
-        
+         
+        //Dummy async operation stimulation
         componentDidMount(){
             setTimeout(() => {
                 this.setState({ loading: false });
@@ -14,7 +16,7 @@ const withSplashScreen = (WrapperComponent: React.ComponentClass) => {
         render(){
             const { loading } = this.state;
             
-            if(loading) return <div>Loading...</div>
+            if(loading) return <SplashScreen />
 
             return <WrapperComponent {...this.props} />
         }

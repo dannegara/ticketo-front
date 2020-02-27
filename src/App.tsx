@@ -7,6 +7,7 @@ import NavBar from './components/UI/navbar';
 import Feed from './components/feed';
 import Event from './components/event';
 import Purchase from './components/purchase';
+import withSplashScreen from './hoc/with-splash-screen';
 
 export interface HelloProps{
   compiler: string;
@@ -40,4 +41,4 @@ class App extends Component{
   }
 }
 
-export default App;
+export default withSplashScreen(App);
