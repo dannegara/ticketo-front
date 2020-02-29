@@ -5,13 +5,6 @@ import Login from './components/login';
 import Register from './components/register';
 import NavBar from './components/UI/navbar';
 import Feed from './components/feed';
-//import { FaBeer } from 'react-icons/fa';
-
-export interface HelloProps{
-  compiler: string;
-  framework: string;
-  notNecessaryProps?: string;
-}
 
 class App extends Component{
 
