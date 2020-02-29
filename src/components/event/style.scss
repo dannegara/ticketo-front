@@ -1,0 +1,25 @@
+$white: #fff;
+$standartPadding: 16px;
+$noPadding: 0;
+$mobileWidth: 455px;
+
+.main-container{
+    display: flex;
+    color: $white;
+    .poster-container{
+        flex: 1;
+        padding: $standartPadding;
+        img{
+            max-width: 100%;
+        }
+        @media screen and (max-width: $mobileWidth){
+            padding: $noPadding;
+        }
+    }
+    .info-container{
+        flex: 4;
+    }
+    @media screen and (max-width: $mobileWidth){
+        flex-direction: column;
+    }
+}

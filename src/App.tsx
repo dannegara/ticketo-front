@@ -5,8 +5,19 @@ import Login from './components/login';
 import Register from './components/register';
 import NavBar from './components/UI/navbar';
 import Feed from './components/feed';
+import Event from './components/event';
+import Purchase from './components/purchase';
+import withSplashScreen from './hoc/with-splash-screen';
+import api from './api/index';
 
 class App extends Component{
+
+  async componentDidMount(){
+    // const data = await api.getCountries();
+    // console.log(data);
+    const data = await api.getCountry(21);
+    console.log(data.data);
+  }
 
   render(){
 
@@ -23,6 +34,8 @@ class App extends Component{
           <Route path="/register" exact>
             <Register />
           </Route>
+          <Route path="/event/:eventId" exact component={Event} />
+          <Route path="/purchase/:eventId" exact component={Purchase} />
           <Redirect to="/login" />
         </Switch>
       </div>
@@ -30,4 +43,4 @@ class App extends Component{
   }
 }
 
-export default App;
+export default withSplashScreen(App);
