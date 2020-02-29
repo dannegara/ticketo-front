@@ -9,11 +9,13 @@ const STYLE_DEFAULT_INPUT: string = "default-input";
 const STYLE_DEFAULT_CONTAINER: string = "login-block";
 
 interface ILoginForm{
-    isLoading: boolean
+    isLoading: boolean,
+    submit: any
 }
 
 const LoginForm: React.SFC<ILoginForm> = ({
-    isLoading
+    isLoading,
+    submit
 }) => {
     return(
         <div className={STYLE_DEFAULT_CONTAINER}>
@@ -25,7 +27,7 @@ const LoginForm: React.SFC<ILoginForm> = ({
                 className={`${STYLE_DEFAULT_INPUT} login-page-input`} 
                 placeholder="Password" 
             />
-            {!isLoading ? <Button>Login</Button>:
+            {!isLoading ? <Button onClick={submit}>Login</Button>:
             <Spinner />}
             <p className="plain-text">
                 Don't have an account? <Link to="/register" className="link">Register</Link>

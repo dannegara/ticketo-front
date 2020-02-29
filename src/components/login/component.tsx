@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LoginForm from './login-form';
 import './style.scss';
+//import api from '../../api';
 
 const STYLE_DEFAULT_LOGIN: string = 'login-container';
 
@@ -17,13 +18,18 @@ class Login extends Component<LoginProps, State>{
         isLoading: false
     }
 
+    submitForm = (e: any) => {
+        console.log('submitting');
+        //api.login();
+    }
+
     render(){
         const {
             isLoading
         } = this.state;
         return(
             <div className={STYLE_DEFAULT_LOGIN}>
-                <LoginForm isLoading={isLoading} />
+                <LoginForm isLoading={isLoading} submit={this.submitForm} />
             </div>
         )
     }
