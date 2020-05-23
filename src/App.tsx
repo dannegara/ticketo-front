@@ -8,16 +8,8 @@ import Feed from './components/feed';
 import Event from './components/event';
 import Purchase from './components/purchase';
 import withSplashScreen from './hoc/with-splash-screen';
-import api from './api/index';
 
 class App extends Component{
-
-  async componentDidMount(){
-    // const data = await api.getCountries();
-    // console.log(data);
-    const data = await api.getCountry(21);
-    console.log(data.data);
-  }
 
   render(){
 
