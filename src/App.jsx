@@ -10,6 +10,8 @@ import Event from './components/event';
 import Purchase from './components/purchase';
 import SplashScreen from './components/splash-screen';
 import { checkToken } from './store/actions/auth';
+import ProtectedRoute from './helpers/ProtectedRoute';
+import NotFound from './components/not-found';
  
 class App extends Component{
 
@@ -21,7 +23,7 @@ class App extends Component{
     setTimeout(() => {
       this.setState({ isLoading: false })
     }, 500);
-    this.props.checkToken();
+    //this.props.checkToken();
   }
 
   render(){
@@ -35,15 +37,19 @@ class App extends Component{
           <Route path="/" exact>
             <Feed />
           </Route>
-          <Route path="/login" exact>
-            <Login />
-          </Route>
+          <ProtectedRoute
+            component={Login}
+            exact
+            requireAuth={false}
+            path="/login"
+          />
           <Route path="/register" exact>
             <Register />
           </Route>
           <Route path="/event/:eventId" exact component={Event} />
           <Route path="/purchase/:eventId" exact component={Purchase} />
-          <Redirect to="/login" />
+          <Route path="/not-found" exact component={NotFound} />
+          <Redirect to="/not-found" />
         </Switch>
       </div>
     )

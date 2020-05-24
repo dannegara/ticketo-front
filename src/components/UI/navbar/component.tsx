@@ -8,7 +8,10 @@ interface IState{
     sidebar: string[],
     background: string[]
 }
-interface IProps{}
+interface IProps{
+    isAuth: boolean,
+    logout: () => void
+}
 
 class NavBar extends Component<IProps,IState> {
 
@@ -33,6 +36,8 @@ class NavBar extends Component<IProps,IState> {
 
     render(){
         const { sidebar, background } = this.state;
+        const { isAuth, logout } = this.props;
+
         return(
             <div>
                 <nav>
@@ -44,10 +49,16 @@ class NavBar extends Component<IProps,IState> {
                     <div className="logo-container">
                         <Link to="/"><Logo /></Link>
                     </div>
-                    <div className="links-container">
-                        <Link to="/login"><Button>Login</Button></Link>
-                        <Link to="/register"><Button>Register</Button></Link>
-                    </div>
+                    {!isAuth ? (
+                        <div className="links-container">
+                            <Link to="/login"><Button>Login</Button></Link>
+                            <Link to="/register"><Button>Register</Button></Link>
+                        </div>
+                    ) : (
+                        <div className="links-container">
+                            <Button onClick={logout}>Logout</Button>
+                        </div>
+                    )}
                 </nav>
                 <div className="sidebar-container">
                     <div className={background.join(' ')} onClick={this.removeSidebar}></div>

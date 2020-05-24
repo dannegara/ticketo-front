@@ -34,6 +34,7 @@ const LoginForm: React.SFC<ILoginForm> = ({
                 className={`${STYLE_DEFAULT_INPUT} login-page-input`} 
                 placeholder="Password" 
                 onChange={(event) => setPassword(event.currentTarget.value)}
+                type="password"
             />
             {!isLoading ? <Button onClick={() => submit({ login, password })}>Login</Button>:
             <Spinner />}

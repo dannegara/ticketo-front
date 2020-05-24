@@ -12,7 +12,8 @@ interface State{
 }
 interface LoginProps{
     msg?: string,
-    history?: any
+    history?: any,
+    login: () => void
 }
 
 class Login extends Component<LoginProps, State>{
@@ -23,12 +24,12 @@ class Login extends Component<LoginProps, State>{
     }
 
     submitForm = async (values: ILogin) => {
-        const { history: { push } } = this.props
+        const { history: { push }, login } = this.props
         try {
             const { data: { msg, token } } = await api.login(values);
             if(msg === 'login success') {
                 localStorage.setItem('token', token);
-                //reduxAction.login()
+                login();
                 push('/');
             }else {
                 this.setState({ error: true });

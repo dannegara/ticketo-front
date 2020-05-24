@@ -1,5 +1,7 @@
 import {
-    CHECK_TOKEN
+    CHECK_TOKEN,
+    LOGIN,
+    LOGOUT
 } from '../actions/auth';
 
 const initialState = {
@@ -13,6 +15,16 @@ export default (state = initialState, { type, payload }) => {
                 ...state,
                 profile: payload.profile,
                 isAuth: payload.isAuth
+            }
+        case LOGIN:
+            return {
+                ...state,
+                isAuth: true
+            }
+        case LOGOUT:
+            return {
+                ...state,
+                isAuth: false
             }
         default: 
             return state;
