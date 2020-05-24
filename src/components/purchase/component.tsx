@@ -20,24 +20,10 @@ interface IState{
 
 interface IProps extends RouteComponentProps<MatchParams>{}
 
-const creditCardInputs = [
-    {
-        type: 'number',
-        className: 'card-number-input'
-    },
-    {
-        type: 'number',
-        className: 'card-number-input'
-    },
-    {
-        type: 'number',
-        className: 'card-number-input'
-    },
-    {
-        type: 'number',
-        className: 'card-number-input'
-    }
-]
+const creditCardInputs = new Array(4).fill({
+    type: 'number',
+    className: 'card-number-input'
+});
 
 export default class extends Component<IProps, IState>{
 
