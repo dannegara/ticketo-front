@@ -24,7 +24,8 @@ export default (state = initialState, { type, payload }) => {
         case LOGOUT:
             return {
                 ...state,
-                isAuth: false
+                isAuth: false,
+                profile: {}
             }
         default: 
             return state;

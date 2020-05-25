@@ -3,11 +3,11 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const REGISTER = 'REGISTER';
 
-export const checkToken = () => {
+export const checkToken = (userData: object) => {
     return {
         type: CHECK_TOKEN,
         payload: {
-            profile: {},
+            profile: userData,
             isAuth: true
         }
     }
@@ -25,4 +25,7 @@ export const register = () => {
     }
 }
 
-export const logout = () => ({ type: LOGOUT });
+export const logout = () => {
+    localStorage.clear();
+    return { type: LOGOUT };
+}

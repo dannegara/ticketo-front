@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import './style.scss';
 import Button from '../UI/button';
+import { getEvent } from '../../api/event';
 
 interface MatchParams{
     eventId: string;
 }
 
 interface IState{
-    eventId: string;
+    eventId: number;
 }
 
 interface IProps extends RouteComponentProps<MatchParams>{}
@@ -16,11 +17,17 @@ interface IProps extends RouteComponentProps<MatchParams>{}
 export default class extends Component<IProps, IState>{
 
     state = {
-        eventId: this.props.match.params.eventId
+        eventId: +this.props.match.params.eventId
     }
 
-    componentDidMount(){
-        console.log(this.state.eventId);
+    async componentDidMount(){
+        const { eventId } = this.state;
+        try {
+            const { data } = await getEvent(eventId);
+            console.log(data);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     render(){

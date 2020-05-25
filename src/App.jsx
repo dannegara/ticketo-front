@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './App.scss';
-import Login from './components/login';
-import Register from './components/register';
 import NavBar from './components/UI/navbar';
-import Feed from './components/feed';
-import Event from './components/event';
-import Purchase from './components/purchase';
 import SplashScreen from './components/splash-screen';
-import { checkToken } from './store/actions/auth';
-import ProtectedRoute from './helpers/ProtectedRoute';
-import NotFound from './components/not-found';
+import { checkToken, logout } from './store/actions/auth';
+import { checkToken as apiCheckToken } from './api/auth';
+import Routes from './routes';
  
 class App extends Component{
 
@@ -19,38 +13,26 @@ class App extends Component{
     isLoading: true
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ isLoading: false })
-    }, 500);
-    //this.props.checkToken();
+  async componentDidMount() {
+    try {
+      const { data } = await apiCheckToken();
+      this.props.checkToken(data);
+    } catch (error) {
+      this.props.logout();
+    } finally {
+      this.setState({ isLoading: false });
+    }
   }
 
   render(){
     console.log(this.props.isAuth);
+    console.log(this.props.profile);
     if(this.state.isLoading) return <SplashScreen />
 
     return(
       <div>
         <NavBar />
-        <Switch>
-          <Route path="/" exact>
-            <Feed />
-          </Route>
-          <ProtectedRoute
-            component={Login}
-            exact
-            requireAuth={false}
-            path="/login"
-          />
-          <Route path="/register" exact>
-            <Register />
-          </Route>
-          <Route path="/event/:eventId" exact component={Event} />
-          <Route path="/purchase/:eventId" exact component={Purchase} />
-          <Route path="/not-found" exact component={NotFound} />
-          <Redirect to="/not-found" />
-        </Switch>
+        <Routes />
       </div>
     )
   }
@@ -59,10 +41,12 @@ class App extends Component{
 export default connect(
   (state, props) => {
     return {
-      isAuth: state.auth.isAuth
+      isAuth: state.auth.isAuth,
+      profile: state.auth.profile
     }
   },
   {
-    checkToken
+    checkToken,
+    logout
   }
 )(App);
