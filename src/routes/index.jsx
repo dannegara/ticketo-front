@@ -7,6 +7,8 @@ import Event from '../components/event';
 import Purchase from '../components/purchase';
 import ProtectedRoute from '../helpers/ProtectedRoute';
 import NotFound from '../components/not-found';
+import Cart from '../components/cart';
+import Profile from '../components/profile';
 
 export default () => (
     <Switch>
@@ -24,6 +26,18 @@ export default () => (
             exact
             requireAuth={false}
             path="/register"
+        />
+        <ProtectedRoute 
+            component={Cart}
+            exact
+            requireAuth={true}
+            path="/cart"
+        />
+        <ProtectedRoute 
+            component={Profile}
+            exact
+            requireAuth={true}
+            path="/profile/:userId?"
         />
         <Route path="/event/:eventId" exact component={Event} />
         <Route path="/purchase/:eventId" exact component={Purchase} />

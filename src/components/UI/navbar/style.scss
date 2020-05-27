@@ -25,6 +25,12 @@ nav{
         button{
             margin-left: $margins;
         }
+        svg {
+            cursor: pointer;
+            color: white;
+            float: right;
+            margin-right: $margins;
+        }
         @media screen and (max-width: $mobileWidth){
             display: none;
         }

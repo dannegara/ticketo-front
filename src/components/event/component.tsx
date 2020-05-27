@@ -30,6 +30,11 @@ export default class extends Component<IProps, IState>{
         }
     }
 
+    addToCartHandler = () => {
+        const { eventId } = this.state
+        console.log(eventId);
+    }
+
     render(){
         const { eventId } = this.state;
         return(
@@ -51,6 +56,7 @@ export default class extends Component<IProps, IState>{
                             <Link to={`/purchase/${eventId}`}>
                                 <Button>Buy</Button>
                             </Link>
+                            <Button onClick={this.addToCartHandler}>Add to Cart</Button>
                         </div>
                     </div>
                 </div>

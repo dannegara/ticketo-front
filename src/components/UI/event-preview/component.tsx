@@ -1,5 +1,4 @@
 import React, { SFC } from 'react';
-import { TiTicket } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
 import './style.scss';
 
@@ -9,7 +8,6 @@ interface IEventProps{
     organizerLink: string,
     eventName: string,
     eventDate: string,
-    ticketCount: number,
     description: string,
     eventId: number,
     price: number
@@ -21,7 +19,6 @@ const EventPreview: SFC<IEventProps> = ({
     organizerLink,
     eventName,
     eventDate,
-    ticketCount,
     description,
     eventId,
     price,
@@ -35,7 +32,7 @@ const EventPreview: SFC<IEventProps> = ({
                 <div className="organizer">
                     <div className="organizer-name">{organizerName}</div>
                     <div className="organizer-link">
-                        <Link to={`/event/${eventId}`}>@{organizerLink}</Link>
+                        <Link to={`/profile/1`}>@{organizerLink}</Link>
                     </div>
                 </div>
             </div>
@@ -43,7 +40,6 @@ const EventPreview: SFC<IEventProps> = ({
                 <div className="event-info">
                     <span>{eventName}</span> 
                     <span>{eventDate}</span>
-                    <span>Tickets sold: {ticketCount} <TiTicket /></span>
                 </div>
                 <div className="description">
                     {description}

@@ -18,7 +18,6 @@ const Events: React.SFC<IEventProps> = () => {
                 organizerLink={"dan_negara"}
                 eventName={"Slipknot 2020 concert"}
                 eventDate={"20-10-2020"}
-                ticketCount={1000}
                 description={dummyText}
                 price={10}
                 eventId={1}
@@ -29,7 +28,6 @@ const Events: React.SFC<IEventProps> = () => {
                 organizerLink={"dan_negara"}
                 eventName={"Slipknot 2020 concert"}
                 eventDate={"20-10-2020"}
-                ticketCount={1000}
                 description={dummyText}
                 price={10}
                 eventId={1}
@@ -40,7 +38,6 @@ const Events: React.SFC<IEventProps> = () => {
                 organizerLink={"dan_negara"}
                 eventName={"Slipknot 2020 concert"}
                 eventDate={"20-10-2020"}
-                ticketCount={1000}
                 description={dummyText}
                 price={10}
                 eventId={1}
@@ -51,7 +48,6 @@ const Events: React.SFC<IEventProps> = () => {
                 organizerLink={"dan_negara"}
                 eventName={"Slipknot 2020 concert"}
                 eventDate={"20-10-2020"}
-                ticketCount={1000}
                 description={dummyText}
                 price={10}
                 eventId={1}

@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {
+    FaSignOutAlt,
+    FaUserCircle,
+    FaShoppingCart
+} from 'react-icons/fa';
 import './style.scss';
 import Button from '../button';
 import Logo from '../logo';
@@ -56,7 +61,9 @@ class NavBar extends Component<IProps,IState> {
                         </div>
                     ) : (
                         <div className="links-container">
-                            <Button onClick={logout}>Logout</Button>
+                            <Link to="/cart"><FaShoppingCart /></Link>
+                            <Link to="/profile"><FaUserCircle /></Link>
+                            <FaSignOutAlt onClick={logout} />
                         </div>
                     )}
                 </nav>
