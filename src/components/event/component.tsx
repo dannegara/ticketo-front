@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import './style.scss';
 import Button from '../UI/button';
+import SnackBar from '../UI/snackbar';
 import { getEvent } from '../../api/event';
 
 interface MatchParams{
@@ -12,7 +13,9 @@ interface IState{
     eventId: number;
 }
 
-interface IProps extends RouteComponentProps<MatchParams>{}
+interface IProps extends RouteComponentProps<MatchParams>{
+    isAuth: boolean
+}
 
 export default class extends Component<IProps, IState>{
 
@@ -37,9 +40,14 @@ export default class extends Component<IProps, IState>{
 
     render(){
         const { eventId } = this.state;
+        const { isAuth } = this.props;
+
+        const link = isAuth ? `/purchase/${eventId}` : '/login';
+
         return(
             // hardcoded margin top
             <div style={{marginTop: 75}}>
+                <SnackBar content={"Added successfully"} />
                 <div className="main-container">
                     <div className="poster-container">
                         <img src={"https://www.wearethepit.com/wp-content/uploads/2019/08/Screen-Shot-2019-07-24-at-3.50.45-PM.png"} alt="Event Poster" />
@@ -53,7 +61,7 @@ export default class extends Component<IProps, IState>{
                         </div>
                         <div className="purchasing-container">
                             Price: <i>10.00$</i> 
-                            <Link to={`/purchase/${eventId}`}>
+                            <Link to={link}>
                                 <Button>Buy</Button>
                             </Link>
                             <Button onClick={this.addToCartHandler}>Add to Cart</Button>

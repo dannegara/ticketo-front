@@ -9,3 +9,9 @@ export interface IRegister {
     firstname: string,
     lastname: string
 }
+
+export interface IBuyTicket {
+    dayMonth: string,
+    cardNumber: string,
+    cvv: string
+}

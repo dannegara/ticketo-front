@@ -71,10 +71,15 @@ class NavBar extends Component<IProps,IState> {
                     <div className={background.join(' ')} onClick={this.removeSidebar}></div>
                     <div className={sidebar.join(' ')}>
                         <ul>
-                            <li>fhdsbkasbs</li>
-                            <li>fhdsbkasbs</li>
-                            <li>fhdsbkasbs</li>
-                            <li>fhdsbkasbs</li>
+                            <li>
+                                <Link to="/cart"><FaShoppingCart /> Cart</Link>
+                            </li>
+                            <li>
+                                <Link to="/profile"><FaUserCircle /> Profile</Link>
+                            </li>
+                            <li>
+                                <FaSignOutAlt onClick={logout} /> Logout
+                            </li>
                         </ul>
                     </div>
                 </div>

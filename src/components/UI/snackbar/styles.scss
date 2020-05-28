@@ -1,0 +1,16 @@
+.snackbar {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: green;
+    width: 300px;
+    max-width: 90%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+        color: #fff;
+    }
+}

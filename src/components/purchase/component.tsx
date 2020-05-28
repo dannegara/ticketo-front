@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import produce from 'immer';
 import './style.scss';
 import Button from '../UI/button';
-import PurchaseForm from './purchase-form';
 import EventPreview from './event-preview';
+import { buyTicket } from '../../api/ticket';
 
 interface MatchParams{
     eventId: string;
@@ -30,7 +31,9 @@ export default class extends Component<IProps, IState>{
     state = {
         eventId: this.props.match.params.eventId,
         creditCardForm: {
-            dayMonth: ''
+            dayMonth: '',
+            cardNumbers: new Array(4),
+            cvv: ''
         }
     }
 
@@ -49,14 +52,18 @@ export default class extends Component<IProps, IState>{
         if(index === 3 && value.length >= 4){
             document.getElementById('credit-card-month')?.focus();
         }
+        this.setState(produce(this.state, draft => {
+            draft.creditCardForm.cardNumbers[index] = value;
+        }));
     }
 
     creditCardMonthChange = (event: React.FormEvent<HTMLInputElement>): void => {
         const { value } = event.currentTarget;
+        const { creditCardForm } = this.state;
         let dayMonthValue = value;
-        if(value.length === 2){
-            dayMonthValue+="/"
-        }
+        if(value.length === 2 && creditCardForm.dayMonth.length < value.length) dayMonthValue+="/"
+        else dayMonthValue = value;
+        
         if(value.length === 5){
             document.getElementById('cvv')?.focus();
         }
@@ -66,6 +73,22 @@ export default class extends Component<IProps, IState>{
                 dayMonth: dayMonthValue
             }
         }));
+    }
+
+    changeCvv = (event: React.FormEvent<HTMLInputElement>) => {
+        this.setState(produce(this.state, draft => {
+            draft.creditCardForm.cvv = event.currentTarget.value;
+        }));
+    }
+
+    submitFormHandler = async () => {
+        const { dayMonth, cardNumbers, cvv } = this.state.creditCardForm;
+        try {
+            await buyTicket({dayMonth, cardNumber: cardNumbers.join(""), cvv});
+            this.props.history.push('/purchase/status');
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     render(){
@@ -95,11 +118,10 @@ export default class extends Component<IProps, IState>{
                                 placeholder="MM/YY"
                                 value={creditCardForm.dayMonth}
                             /> 
-                            <input id="cvv" maxLength={3} placeholder="CVV" />
+                            <input id="cvv" maxLength={3} placeholder="CVV" onChange={this.changeCvv} />
                         </div>
                     </div>
-                    <Button>Purchase</Button>
-                    <PurchaseForm />
+                    <Button onClick={this.submitFormHandler}>Purchase</Button>
                 </div>
             </div>
         )

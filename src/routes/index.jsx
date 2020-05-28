@@ -9,6 +9,7 @@ import ProtectedRoute from '../helpers/ProtectedRoute';
 import NotFound from '../components/not-found';
 import Cart from '../components/cart';
 import Profile from '../components/profile';
+import PurchseStatus from '../components/purchase-status';
 
 export default () => (
     <Switch>
@@ -40,6 +41,7 @@ export default () => (
             path="/profile/:userId?"
         />
         <Route path="/event/:eventId" exact component={Event} />
+        <Route path="/purchase/status" exact component={PurchseStatus} />
         <Route path="/purchase/:eventId" exact component={Purchase} />
         <Route path="/not-found" exact component={NotFound} />
         <Redirect to="/not-found" />
