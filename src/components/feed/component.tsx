@@ -20,13 +20,16 @@ class Feed extends Component<State, Props>{
     async componentDidMount() {
         try {
             const { data } = await getEvents();
-            console.log(data);
+            this.setState({ events: data });
         }catch(e) {
             console.log('Error' + e);
         }
     }
 
     render(){
+        const { events } = this.state;
+        console.log(events);
+        
         return(
             <div>
                 <Events events={[{}]} />

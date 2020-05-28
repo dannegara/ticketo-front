@@ -13,5 +13,6 @@ export interface IRegister {
 export interface IBuyTicket {
     dayMonth: string,
     cardNumber: string,
-    cvv: string
+    cvv: string,
+    eventId: string
 }

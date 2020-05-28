@@ -82,9 +82,16 @@ export default class extends Component<IProps, IState>{
     }
 
     submitFormHandler = async () => {
-        const { dayMonth, cardNumbers, cvv } = this.state.creditCardForm;
+        const {
+            eventId,
+            creditCardForm: {
+                dayMonth,
+                cardNumbers,
+                cvv
+            }
+        } = this.state;
         try {
-            await buyTicket({dayMonth, cardNumber: cardNumbers.join(""), cvv});
+            await buyTicket({dayMonth, cardNumber: cardNumbers.join(""), cvv, eventId});
             this.props.history.push('/purchase/status');
         } catch (error) {
             console.log(error);
