@@ -4,6 +4,7 @@ import './style.scss';
 import Button from '../UI/button';
 import SnackBar from '../UI/snackbar';
 import { getEvent } from '../../api/event';
+import { addToCart } from '../../api/cart';
 
 interface MatchParams{
     eventId: string;
@@ -33,9 +34,16 @@ export default class extends Component<IProps, IState>{
         }
     }
 
-    addToCartHandler = () => {
+    addToCartHandler = async () => {
         const { eventId } = this.state
-        console.log(eventId);
+        const { isAuth } = this.props;
+        if(!isAuth) this.props.history.push('/login');
+        try {
+            await addToCart(eventId);
+            this.props.history.push('/cart');
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     render(){

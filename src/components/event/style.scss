@@ -19,6 +19,11 @@ $mobileWidth: 455px;
     .info-container{
         flex: 4;
     }
+    .purchasing-container {
+        button {
+            margin-left: 10px;
+        }
+    }
     @media screen and (max-width: $mobileWidth){
         flex-direction: column;
     }

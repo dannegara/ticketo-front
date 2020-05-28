@@ -1,0 +1,30 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './styles.scss';
+import Button from '../button';
+
+interface Props {
+    src?: string,
+    title: string,
+    price: number,
+    id: number,
+    date: string
+}
+
+export default (props: Props) => (
+    <div className="cart-item">
+        {props.src ? (
+            <div className="image-container">
+                <img src={props.src} alt="event" />
+            </div>
+            ):
+            (
+                <div className="no-image">No image found</div>
+            )    
+        }
+        <h3>{props.title}</h3>
+        <h4>{props.date}</h4>
+        <h4>{props.price}</h4>
+        <Link to={`/purchase/${props.id}`}><Button>Buy</Button></Link>
+    </div>
+)
