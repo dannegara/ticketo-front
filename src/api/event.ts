@@ -8,3 +8,7 @@ export const getEvents = () => {
 export const getEvent = (eventId: number) => {
     return axios.get(`${EVENTS_ENDPOINT}/getEvent/${eventId}`);
 }
+
+export const addEvent = (body: FormData) => {
+    return axios.post(`${EVENTS_ENDPOINT}/addEvent`, body);
+}

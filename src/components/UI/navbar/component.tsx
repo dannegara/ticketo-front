@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import {
     FaSignOutAlt,
     FaUserCircle,
-    FaShoppingCart
+    FaShoppingCart,
+    FaCalendar,
+    FaPlus
 } from 'react-icons/fa';
 import './style.scss';
 import Button from '../button';
@@ -61,9 +63,11 @@ class NavBar extends Component<IProps,IState> {
                         </div>
                     ) : (
                         <div className="links-container">
-                            <Link to="/cart"><FaShoppingCart /></Link>
-                            <Link to="/profile"><FaUserCircle /></Link>
                             <FaSignOutAlt onClick={logout} />
+                            <Link to="/cart"><FaShoppingCart /></Link>
+                            <Link to="/add-event"><FaPlus /></Link>
+                            <Link to="/my-events"><FaCalendar /></Link>
+                            <Link to="/profile"><FaUserCircle /></Link>
                         </div>
                     )}
                 </nav>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
 import './styles.scss';
 import Button from '../button';
 
@@ -23,7 +24,7 @@ export default (props: Props) => (
             )    
         }
         <h3>{props.title}</h3>
-        <h4>{props.date}</h4>
+        <h4>{format(new Date(props.date), 'MM.dd.yyyy')}</h4>
         <h4>{props.price}</h4>
         <Link to={`/purchase/${props.id}`}><Button>Buy</Button></Link>
     </div>

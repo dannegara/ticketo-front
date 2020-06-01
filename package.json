@@ -16,6 +16,7 @@
     "@types/redux-form": "^8.2.6",
     "@types/yup": "^0.29.0",
     "axios": "^0.19.2",
+    "date-fns": "^2.14.0",
     "formik": "^2.1.4",
     "immer": "^6.0.9",
     "node-sass": "^4.13.1",

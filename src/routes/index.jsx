@@ -10,6 +10,8 @@ import NotFound from '../components/not-found';
 import Cart from '../components/cart';
 import Profile from '../components/profile';
 import PurchseStatus from '../components/purchase-status';
+import AddEvent from '../components/add-event';
+import MyEvents from '../components/my-events';
 
 export default () => (
     <Switch>
@@ -39,6 +41,18 @@ export default () => (
             exact
             requireAuth={true}
             path="/profile/:userId?"
+        />
+        <ProtectedRoute 
+            component={AddEvent}
+            exact
+            requireAuth
+            path="/add-event"
+        />
+        <ProtectedRoute 
+            component={MyEvents}
+            exact
+            requireAuth
+            path="/my-events"
         />
         <Route path="/event/:eventId" exact component={Event} />
         <Route path="/purchase/status" exact component={PurchseStatus} />
