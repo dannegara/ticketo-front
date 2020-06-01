@@ -1,8 +1,11 @@
 import axios from './instance';
 const EVENTS_ENDPOINT: string = '/events';
 
-export const getEvents = () => {
-    return axios.get(`${EVENTS_ENDPOINT}/getEvents`);
+export const getEvents = (userId?: number) => {
+    let queryParam = ``;
+    if(userId)
+        queryParam+= `?userId=${userId}`
+    return axios.get(`${EVENTS_ENDPOINT}/getEvents${queryParam}`);
 }
 
 export const getEvent = (eventId: number) => {
