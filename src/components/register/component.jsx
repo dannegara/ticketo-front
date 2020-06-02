@@ -15,7 +15,7 @@ export default class extends React.Component {
             await register(values);
             this.props.history.push('/login');
         } catch (error) {
-            console.error(error);
+            //Handling error
         }
     }
 

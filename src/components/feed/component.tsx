@@ -22,13 +22,12 @@ class Feed extends Component<State, Props>{
             const { data } = await getEvents();
             this.setState({ events: data });
         }catch(e) {
-            console.log('Error' + e);
+            //Handling error
         }
     }
 
     render(){
         const { events } = this.state;
-        console.log(events);
         
         return(
             <div>

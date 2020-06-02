@@ -67,7 +67,7 @@ export default class extends Component<IProps, IState>{
             const { data: event } = await getEvent(eventId);
             this.setState({ event });
         } catch (error) {
-            console.log(error);
+            //Handling err
         }
     }
 
@@ -79,7 +79,7 @@ export default class extends Component<IProps, IState>{
             await addToCart(eventId);
             this.props.history.push('/cart');
         } catch (error) {
-            console.log(error);
+            //Handling error
         }
     }
 

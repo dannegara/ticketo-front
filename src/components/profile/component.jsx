@@ -7,7 +7,6 @@ export default class extends Component {
     }
 
     render() {
-        console.log(this.state.userId);
         return (
             <div>Profile page</div>
         )

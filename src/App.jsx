@@ -25,8 +25,6 @@ class App extends Component{
   }
 
   render(){
-    console.log(this.props.isAuth);
-    console.log(this.props.profile);
     if(this.state.isLoading) return <SplashScreen />
 
     return(

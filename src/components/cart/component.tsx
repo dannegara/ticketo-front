@@ -16,7 +16,7 @@ export default class extends Component<any, any> {
 
     render() {
         const { cartItems } = this.state;
-        console.log(cartItems);
+        
         return (
             <div className="cart">
                 {cartItems.map((item: any, index: number) => (

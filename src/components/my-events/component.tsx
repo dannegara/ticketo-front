@@ -28,7 +28,7 @@ export default class extends Component<Props> {
 
     render() {
         const { events } = this.state;
-        console.log(events);
+
         return (
             <div style={{marginTop: 100}} className="my-events">
                 {events.map((item: any, index: number) => (

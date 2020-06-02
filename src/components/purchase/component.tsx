@@ -37,10 +37,6 @@ export default class extends Component<IProps, IState>{
         }
     }
 
-    componentDidMount(){
-        console.log(this.state.eventId);
-    }
-
     creditCardNumberChange = (event: React.FormEvent<HTMLInputElement>, index: number): void => {
         const { value } = event.currentTarget;
         //Adding any in order to avoid dom typescript typing errors
@@ -94,7 +90,7 @@ export default class extends Component<IProps, IState>{
             await buyTicket({dayMonth, cardNumber: cardNumbers.join(""), cvv, eventId});
             this.props.history.push('/purchase/status');
         } catch (error) {
-            console.log(error);
+            //Handling error
         }
     }
 
