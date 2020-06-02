@@ -7,7 +7,7 @@ export const login = (login: ILogin) => {
     return axios.post(`${AUTH_DEFAULT_PATH}/login`, login);
 }
 export const register = (register: IRegister) => {
-    console.log(register);
+    return axios.post(`${AUTH_DEFAULT_PATH}/register`, register);
 }
 export const checkToken = () => {
     return axios.get(`${AUTH_DEFAULT_PATH}/getUserData`);
