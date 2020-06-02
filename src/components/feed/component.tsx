@@ -32,7 +32,7 @@ class Feed extends Component<State, Props>{
         
         return(
             <div>
-                <Events events={[{}]} />
+                <Events events={events} />
             </div>
         )
     }

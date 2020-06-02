@@ -1,17 +1,37 @@
 import React, { Component } from 'react';
 import { RouteComponentProps, Link } from 'react-router-dom';
+import { format } from 'date-fns';
 import './style.scss';
 import Button from '../UI/button';
-import SnackBar from '../UI/snackbar';
 import { getEvent } from '../../api/event';
 import { addToCart } from '../../api/cart';
+import { MAIN_URL } from '../../helpers/constants';
 
 interface MatchParams{
     eventId: string;
 }
 
+interface Event {
+    address: string
+    city: string
+    country_code: string
+    country_id: number
+    country_name: string
+    description: string
+    eventId: number
+    event_date: Date
+    event_time: string
+    organizer_firstname: string
+    organizer_id: number
+    organizer_lastname: string
+    poster?: string
+    price: number
+    title: string
+}
+
 interface IState{
-    eventId: number;
+    eventId: number
+    event: Event
 }
 
 interface IProps extends RouteComponentProps<MatchParams>{
@@ -21,14 +41,31 @@ interface IProps extends RouteComponentProps<MatchParams>{
 export default class extends Component<IProps, IState>{
 
     state = {
-        eventId: +this.props.match.params.eventId
+        eventId: +this.props.match.params.eventId,
+        event: {
+            address: "",
+            city: "",
+            country_code: "",
+            country_id: 0,
+            country_name: "",
+            description: "",
+            eventId: 0,
+            event_date: new Date(),
+            event_time: "",
+            organizer_firstname: "",
+            organizer_id: 0,
+            organizer_lastname: "",
+            poster: undefined,
+            price: 0,
+            title: ""
+        }
     }
 
     async componentDidMount(){
         const { eventId } = this.state;
         try {
-            const { data } = await getEvent(eventId);
-            console.log(data);
+            const { data: event } = await getEvent(eventId);
+            this.setState({ event });
         } catch (error) {
             console.log(error);
         }
@@ -47,7 +84,7 @@ export default class extends Component<IProps, IState>{
     }
 
     render(){
-        const { eventId } = this.state;
+        const { eventId, event } = this.state;
         const { isAuth } = this.props;
 
         const link = isAuth ? `/purchase/${eventId}` : '/login';
@@ -55,20 +92,19 @@ export default class extends Component<IProps, IState>{
         return(
             // hardcoded margin top
             <div style={{marginTop: 75}}>
-                <SnackBar content={"Added successfully"} />
                 <div className="main-container">
                     <div className="poster-container">
-                        <img src={"https://www.wearethepit.com/wp-content/uploads/2019/08/Screen-Shot-2019-07-24-at-3.50.45-PM.png"} alt="Event Poster" />
+                        <img src={event.poster ? `${MAIN_URL}${event.poster}` : ''} alt="Event Poster" />
                     </div>
                     <div className="info-container">
                         <div className="title-container">
-                            <h1>Title</h1>
+                            <h1>{event.title}</h1>
                         </div>
                         <div className="where-when-container">
-                            Where: Bucharest    When: 10-10-2020
+                            Where: { event.city }    When: {format(new Date(event.event_date), "dd.MM.yyyy")}
                         </div>
                         <div className="purchasing-container">
-                            Price: <i>10.00$</i> 
+                            Price: <i>{event.price}$</i> 
                             <Link to={link}>
                                 <Button>Buy</Button>
                             </Link>
@@ -77,7 +113,7 @@ export default class extends Component<IProps, IState>{
                     </div>
                 </div>
                 <div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque, expedita illo quod repellendus aperiam, error earum obcaecati pariatur ea dignissimos nesciunt culpa quis aliquam, accusantium iste asperiores. Quod, dolorum harum?</p>
+                    <p>{event.description}</p>
                 </div>
             </div>
         )

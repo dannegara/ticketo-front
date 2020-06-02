@@ -24,7 +24,12 @@ $mobileWidth: 455px;
             margin-left: 10px;
         }
     }
+
     @media screen and (max-width: $mobileWidth){
         flex-direction: column;
     }
+}
+p {
+    color: #fff;
+    padding: 8px;
 }

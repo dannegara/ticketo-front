@@ -27,6 +27,7 @@ export default class extends Component<any, any> {
                         title={item.title}
                         price={item.price}
                         date={item.eventDate}
+                        myEvents={false}
                     />
                 ))}
             </div>

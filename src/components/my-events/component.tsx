@@ -39,6 +39,7 @@ export default class extends Component<Props> {
                         title={item.title}
                         price={item.price}
                         date={item.event_date}
+                        myEvents
                     />
                 ))}
             </div>

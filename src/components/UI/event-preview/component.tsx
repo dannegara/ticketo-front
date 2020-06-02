@@ -1,6 +1,8 @@
 import React, { SFC } from 'react';
 import { Link } from 'react-router-dom';
+import { format } from 'date-fns'
 import './style.scss';
+import { MAIN_URL } from '../../../helpers/constants';
 
 interface IEventProps{
     logo: string,
@@ -10,7 +12,8 @@ interface IEventProps{
     eventDate: string,
     description: string,
     eventId: number,
-    price: number
+    price: number,
+    posterUrl: string
 }
 
 const EventPreview: SFC<IEventProps> = ({
@@ -22,9 +25,11 @@ const EventPreview: SFC<IEventProps> = ({
     description,
     eventId,
     price,
+    posterUrl,
 }) => {
+    const style = posterUrl ? {backgroundImage: `url(${MAIN_URL}${posterUrl})`} : {backgroundColor: 'black'}
     return(
-        <div className="event-preview-container">
+        <div className="event-preview-container" style={style}>
             <div className="organizer-info">
                 <div className="organizer-logo">
                     <img src={logo} alt="organizer logo" />
@@ -39,7 +44,7 @@ const EventPreview: SFC<IEventProps> = ({
             <div className="main-info">
                 <div className="event-info">
                     <span>{eventName}</span> 
-                    <span>{eventDate}</span>
+                    <span>{format(new Date(eventDate), "dd.MM.yyyy")}</span>
                 </div>
                 <div className="description">
                     {description}

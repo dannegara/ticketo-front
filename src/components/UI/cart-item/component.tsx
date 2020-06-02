@@ -9,7 +9,8 @@ interface Props {
     title: string,
     price: number,
     id: number,
-    date: string
+    date: string,
+    myEvents: boolean
 }
 
 export default (props: Props) => (
@@ -26,6 +27,8 @@ export default (props: Props) => (
         <h3>{props.title}</h3>
         <h4>{format(new Date(props.date), 'MM.dd.yyyy')}</h4>
         <h4>{props.price}</h4>
-        <Link to={`/purchase/${props.id}`}><Button>Buy</Button></Link>
+        {!props.myEvents && (
+            <Link to={`/purchase/${props.id}`}><Button>Buy</Button></Link>
+        )}
     </div>
 )
