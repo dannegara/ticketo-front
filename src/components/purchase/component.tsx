@@ -95,12 +95,12 @@ export default class extends Component<IProps, IState>{
     }
 
     render(){
-        const { creditCardForm } = this.state;
+        const { creditCardForm, eventId } = this.state;
         return(
             <div className="purchase-page-container">
                 <div className="purchase-card">
                     <div className="event-info">
-                        <EventPreview />
+                        <EventPreview eventId={eventId} />
                     </div>
                     <div className="credit-card">
                         <div className="credit-card-number-container">

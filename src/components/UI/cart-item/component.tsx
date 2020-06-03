@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import './styles.scss';
 import Button from '../button';
+import { MAIN_URL } from '../../../helpers/constants';
 
 interface Props {
     src?: string,
@@ -17,7 +18,7 @@ export default (props: Props) => (
     <div className="cart-item">
         {props.src ? (
             <div className="image-container">
-                <img src={props.src} alt="event" />
+                <img src={`${MAIN_URL}${props.src}`} alt="event" />
             </div>
             ):
             (
